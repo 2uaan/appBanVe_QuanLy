@@ -2,7 +2,7 @@ package thread;
 
 import javax.swing.JFrame;
 
-import model.RotatedLabel;
+import model_interface.RotatedLabel;
 
 public class loadingRotate extends Thread{
 

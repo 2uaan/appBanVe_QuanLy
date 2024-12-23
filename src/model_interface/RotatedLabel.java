@@ -1,4 +1,4 @@
-package model;
+package model_interface;
 
 import javax.swing.*;
 import java.awt.*;

@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 
-import model.RotatedLabel;
+import model_interface.RotatedLabel;
 import thread.loadingRotate;
 
 public class test{
@@ -16,6 +16,7 @@ public class test{
 		        JFrame frame = new JFrame("Rotated JLabel Example");
 		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		        frame.setSize(800, 600);
+		        frame.setBackground(new Color(0,0,0));
 		        frame.setLayout(null); // Sử dụng layout null
 
 		        // Tạo RotatedLabel

@@ -69,7 +69,51 @@ public class staffDAO {
 			String sql = "UPDATE staff \nSET state = 1 \nWHERE staff_id = ?";
 			
 			PreparedStatement pst = connect.prepareStatement(sql);
-			pst.setString(1, id+"");
+			pst.setInt(1, id);
+			int result = pst.executeUpdate();
+			
+			jdbc_new.closeConnection(connect);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public void addStaff(staff s) {
+		try {
+			
+			connect = jdbc_new.getConnection();
+			String sql = "INSERT INTO staff"
+					+ "\nVALUES (?,?,?,?);";
+			
+			PreparedStatement pst = connect.prepareStatement(sql);
+			pst.setInt(1, s.getStaff_id());
+			pst.setString(2, s.getStaff_name());
+			pst.setInt(3, s.isState() ? 1 : 0);
+			pst.setString(4, s.getPassword());
+			int result = pst.executeUpdate();
+			
+			jdbc_new.closeConnection(connect);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public void upDateStaffById(staff s) {
+	try {
+				
+			connect = jdbc_new.getConnection();
+			String sql = "UPDATE staff "
+					+ "\nSET staff_id = ?, staff_name = ?, state = ?, password = ? "
+					+ "\nWHERE staff_id = ?";
+			
+			PreparedStatement pst = connect.prepareStatement(sql);
+			pst.setInt(1, s.getStaff_id());
+			pst.setString(2, s.getStaff_name());
+			pst.setInt(3, s.isState() ? 1 : 0);
+			pst.setString(4, s.getPassword());
+			pst.setInt(5, s.getStaff_id());
 			int result = pst.executeUpdate();
 			
 			jdbc_new.closeConnection(connect);

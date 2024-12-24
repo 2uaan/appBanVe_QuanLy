@@ -55,9 +55,9 @@ public class loading extends Thread{
 		}
 		
 		if (no == 0) {
-			adminView lg = new adminView();
-			lg.setVisible(true);
-			out.setVisible(false);
+//			adminView lg = new adminView();
+//			lg.setVisible(true);
+//			out.setVisible(false);
 		}else if (no == 2) {
 //			newTicketView_movie lg = new newTicketView_movie();
 //			lg.setVisible(true);

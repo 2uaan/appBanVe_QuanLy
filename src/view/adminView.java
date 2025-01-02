@@ -86,11 +86,11 @@ public class adminView extends JFrame{
 		});
 		
 		staffButton = createButton(sample, "Staff");
-		adminView av = new adminView(new staffView());
 		staffButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				adminView av = new adminView(new staffView());
 				setVisible(false);
 				av.setVisible(true);
 			}

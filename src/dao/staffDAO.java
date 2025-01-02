@@ -47,7 +47,7 @@ public class staffDAO {
 			}
 			
 			jdbc_new.closeConnection(connect);
-			
+			connect.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -73,7 +73,7 @@ public class staffDAO {
 			int result = pst.executeUpdate();
 			
 			jdbc_new.closeConnection(connect);
-			
+			connect.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -94,30 +94,7 @@ public class staffDAO {
 			int result = pst.executeUpdate();
 			
 			jdbc_new.closeConnection(connect);
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-	
-	public void upDateStaffById(staff s) {
-	try {
-				
-			connect = jdbc_new.getConnection();
-			String sql = "UPDATE staff "
-					+ "\nSET staff_id = ?, staff_name = ?, state = ?, password = ? "
-					+ "\nWHERE staff_id = ?";
-			
-			PreparedStatement pst = connect.prepareStatement(sql);
-			pst.setInt(1, s.getStaff_id());
-			pst.setString(2, s.getStaff_name());
-			pst.setInt(3, s.isState() ? 1 : 0);
-			pst.setString(4, s.getPassword());
-			pst.setInt(5, s.getStaff_id());
-			int result = pst.executeUpdate();
-			
-			jdbc_new.closeConnection(connect);
-			
+			connect.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -132,6 +109,45 @@ public class staffDAO {
 			PreparedStatement pst = connect.prepareStatement(sql);
 			int result = pst.executeUpdate();
 			
+			jdbc_new.closeConnection(connect);
+			connect.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public void upDateStaffById(staff s) {
+		try {
+					
+				connect = jdbc_new.getConnection();
+				String sql = "UPDATE staff "
+						+ "\nSET staff_id = ?, staff_name = ?, state = ?, password = ? "
+						+ "\nWHERE staff_id = ?";
+				
+				PreparedStatement pst = connect.prepareStatement(sql);
+				pst.setInt(1, s.getStaff_id());
+				pst.setString(2, s.getStaff_name());
+				pst.setInt(3, s.isState() ? 1 : 0);
+				pst.setString(4, s.getPassword());
+				pst.setInt(5, s.getStaff_id());
+				int result = pst.executeUpdate();
+				
+				jdbc_new.closeConnection(connect);
+				connect.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+	
+	public void deleteStaffById(int id) {
+		try {
+			
+			connect = jdbc_new.getConnection();
+			String sql = "DELETE FROM staff"
+					+ "\nWHERE staff_id = ?";
+			PreparedStatement pst = connect.prepareStatement(sql);
+			pst.setInt(1, id);
+			int kq = pst.executeUpdate();
 			jdbc_new.closeConnection(connect);
 			
 		} catch (Exception e) {
